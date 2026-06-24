@@ -1,27 +1,31 @@
 package arrays;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ExtractNumbersFromString {
-    public static void main(String[] args){
-        String str ="1:Prakhas Agarwal , 2: Manish kumar rai ,  3: Risha gugeks56";
-        ArrayList <String> list = new ArrayList<>();
+    public static ArrayList<String> extract(String str) {
+        ArrayList<String> list = new ArrayList<>();
         StringBuilder num = new StringBuilder();
 
-        for(char ch : str.toCharArray()){
-            if(Character.isDigit(ch)){
+        for (char ch : str.toCharArray()) {
+            if (Character.isDigit(ch)) {
                 num.append(ch);
-            }else{
-                if(!num.isEmpty()){
+            } else {
+                if (num.length() != 0) {
                     list.add(num.toString());
                     num.setLength(0);
                 }
             }
         }
-        if(!num.isEmpty()){
+        if (num.length() != 0) {
             list.add(num.toString());
-
         }
-        System.out.println(list);
+        return list;
+    }
+
+    public static void main(String[] args) {
+        String str = "1.sharik agarwal , 2.nijamoodhen32 , 3.kishore raj54";
+        ArrayList<String> result=extract(str);
+        System.out.println(result);
     }
 }
